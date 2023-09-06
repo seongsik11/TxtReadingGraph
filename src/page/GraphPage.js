@@ -111,7 +111,7 @@ const GraphPage = ({ graphData }) => {
             {graphData ? (
                 <canvas id="myChart" ref={canvasRef} width={1366} height={600} />
             ) : (
-                <div style={{ width: '1366px', height: '600px' }}>데이터가 없습니다.</div>
+                <div style={{ width: '1366px', height: '600px', lineHeight:"600px", textAlign:"center",fontSize:"24px", color:"#808080"}}>데이터가 없습니다.</div>
             )}
         </div>
     );
