@@ -19,34 +19,35 @@ function App() {
 
     const handleSendDataToServer = () => {
         if (graphData) {
+            /* dummy data */
 
-            const dummyResponse = {
-                data: {
-                    lgrf: [1.0, 2.3, 5.1, 3.4],
-                    rgrf: [0.8, 1.9, 4.8, 2.9],
-                },
-            };
-
-            setResData(dummyResponse.data);
-            // // 더미 데이터 대신 서버로 전송할 데이터 준비
-            // const requestData = {
-            //     lhs: graphData.LHS,
-            //     lks: graphData.LKS,
-            //     rhs: graphData.RHS,
-            //     rks: graphData.RKS,
+            // const dummyResponse = {
+            //     data: {
+            //         lgrf: [1.0, 2.3, 5.1, 3.4],
+            //         rgrf: [0.8, 1.9, 4.8, 2.9],
+            //     },
             // };
             //
-            // // Axios를 사용하여 서버에 POST 요청 보내기
-            // axios.post('/api/send-data', requestData)
-            //     .then((response) => {
-            //         // 서버 응답을 받았을 때 실행되는 코드
-            //         const { lgrf, rgrf } = response.data;
-            //         // lgrf와 rgrf 데이터를 사용하여 그래프 표현
-            //     })
-            //     .catch((error) => {
-            //         // 에러 처리
-            //         console.error('서버 요청 중 에러 발생:', error);
-            //     });
+            // setResData(dummyResponse.data);
+
+            /* 더미 데이터 대신 서버로 전송할 데이터 준비 */
+            const requestData = {
+                lhs: graphData.LHS,
+                lks: graphData.LKS,
+                rhs: graphData.RHS,
+                rks: graphData.RKS,
+            };
+
+            // Axios를 사용하여 서버에 POST 요청 보내기
+            axios.post('', requestData)
+                .then((res) => {
+                    // 서버 응답을 받았을 때 실행되는 코드
+                    setResData(res.data);
+                })
+                .catch((error) => {
+                    // 에러 처리
+                    console.error('서버 요청 중 에러 발생:', error);
+                });
         }
     };
 
@@ -82,6 +83,11 @@ const Container = styled.div`
 const SendButton = styled.button`
   position: absolute;
   margin-top: 20px;
+  border-radius: 4px;
+  background-color: #36c75c;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
   padding: 10px 30px;
   top: 45vh;
   left: 100px;
